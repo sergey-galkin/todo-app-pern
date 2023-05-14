@@ -1,0 +1,17 @@
+.table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  max-width: 1200px;
+}
+.table th,
+.table td {
+  padding: 5px 10px;
+  border: 1px solid #b9b9b9;
+}
+.table th {
+  background: #ffd245;
+}
+.mark {
+  color: green;
+  text-align: center;
+}

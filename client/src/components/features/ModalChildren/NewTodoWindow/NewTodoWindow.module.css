@@ -1,0 +1,23 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btnsHolder {
+  margin-top: 30px;
+}
+.cancelBtn {
+  background: #d34f4f;
+}
+.cancelBtn:hover {
+  background: #e06a6a;
+}
+
+@media screen and (min-width: 600px) {
+}
+@media screen and (min-width: 768px) {
+}
+@media screen and (min-width: 992px) {
+}
+@media screen and (min-width: 1200px) {
+}
