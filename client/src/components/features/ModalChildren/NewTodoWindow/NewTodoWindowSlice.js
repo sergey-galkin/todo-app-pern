@@ -8,7 +8,7 @@ const getInitialState = (initialValue) => {
   }
 };
 
-const newTodoWindow = createSlice({
+const newTodoWindowSlice = createSlice({
   name: 'newTodoWindow',
   initialState: {
     message: '',
@@ -35,5 +35,5 @@ const newTodoWindow = createSlice({
   },
 });
 
-export const { setMessage, setTodo, resetTodo, setChecks, resetChecks } = newTodoWindow.actions;
-export default newTodoWindow.reducer;
+export const { setMessage, setTodo, resetTodo, setChecks, resetChecks } = newTodoWindowSlice.actions;
+export default newTodoWindowSlice.reducer;

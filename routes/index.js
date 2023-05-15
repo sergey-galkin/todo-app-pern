@@ -1,12 +1,5 @@
 const { Todo } = require("../db/request");
 
-const todos = [
-  {name: 'John', email: 'John@mail.ru', task: 'qwertyu', completed: false, edited: false},
-  {name: 'Marry', email: 'Marry@mail.ru', task: 'asdfgh', completed: false, edited: false},
-  {name: 'Robert', email: 'Robert@mail.ru', task: 'zxcgvbnm', completed: false, edited: false},
-  {name: 'Paul', email: 'Paul@mail.ru', task: 'poiuygth', completed: false, edited: false},
-];
-
 const validation = {
   name: (name) => name.trim().length > 0,
   task: (task) => task.trim().length > 0,
@@ -29,30 +22,31 @@ const validate = (todo) => {
 
 module.exports = function(app) {
   app.get('/api/todos', async (req, res) => {
-    let todos;
+    console.log(req.query);
+    const { limit, skip, orderColumn, orderDirection } = req.query;
+    let todos, amount;
     try {
+      amount = await Todo.count();
       todos = await Todo.findMany({
-        take: 3,
-        // orderedBy: {
-        //   name: 'asc' || 'desc',
-        //   email: 'asc' || 'desc',
-        //   completed: 'asc' || 'desc',
-        // },
-        // skip: 'number',
+        take: Number(limit),
+        orderBy: {
+          [orderColumn]: orderDirection,
+        },
+        skip: Number(skip),
       })
     } catch (error) {
       console.log(error);
       return res.sendStatus(500);
     }
-    res.send(todos);
+    res.send({amount, todos});
   });
 
   app.post('/api/todo', async (req, res) => {
     const todo = req.body;
-    console.log(todo);
+    // console.log(todo);
     const checks = validate(todo);
     const status = Object.values(checks).reduce((res, v) => res ? v : res, true);
-    console.log(status);
+    // console.log(status);
     
     if (status) {
       let savedTodo;
@@ -72,22 +66,4 @@ module.exports = function(app) {
     
     res.send({status, checks});
   });
-
-  // app.get('/api/todos', (req, res) => {
-  //   setTimeout(() => {
-  //     console.log('123454321345');
-  //     res.send(todos);
-  //   }, 1000)
-  // });
-
-  // app.post('/api/todo', (req, res) => {
-  //   setTimeout(() => {
-  //     console.log(req.body);
-  //     const data = validate(req.body);
-  //     const status = Object.values(data).reduce((res, v) => res ? v : res, true);
-  //     console.log(status);
-  //     if (status) todos.push(req.body);
-  //     res.send({status, data});
-  //   }, 1000)
-  // });
 }

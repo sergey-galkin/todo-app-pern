@@ -5,7 +5,7 @@ import Button from '../../../common/Button/Button';
 import MessageWindow from '../MessageWindow/MessageWindow';
 import FormField from '../../../common/FormField/FormField';
 import { useDispatch, useSelector } from 'react-redux';
-import { resetChecks, resetTodo, setChecks, setMessage, setTodo } from './NewTodoWindowSlice';
+import { resetChecks, resetTodo, setChecks, setMessage, setTodo } from './newTodoWindowSlice';
 
 const fields = [
   {
@@ -27,7 +27,8 @@ const fields = [
 
 const NewTodoWindow = ({ closeModal }) => {
   const [addTodo] = useAddTodoMutation();
-  const { refetch } = useGetTodosQuery();
+  const params = useSelector(state => state.table);
+  const { refetch } = useGetTodosQuery(params);
   const dispatch = useDispatch();
   const { message, todo, checks} = useSelector((state) => state.newTodoWindow);
 

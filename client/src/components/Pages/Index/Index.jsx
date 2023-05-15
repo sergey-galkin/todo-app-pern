@@ -5,6 +5,7 @@ import Error from '../../features/Error/Error';
 import Button from '../../common/Button/Button';
 import Table from '../../features/Table/Table';
 import Actions from '../../features/Actions/Actions';
+import Pagination from '../../features/Pagination/Pagination';
 
 const Index = () => {
   // const [isLoading, setIsLoading] = useState(false);
@@ -44,6 +45,7 @@ const Index = () => {
         {error && <Error />}
         <Actions />
         <Table />
+        <Pagination />
       </main>
     </>
  )
