@@ -22,7 +22,7 @@ const validate = (todo) => {
 
 module.exports = function(app) {
   app.get('/api/todos', async (req, res) => {
-    console.log(req.query);
+    // console.log(req.query);
     const { limit, skip, orderColumn, orderDirection } = req.query;
     let todos, amount;
     try {

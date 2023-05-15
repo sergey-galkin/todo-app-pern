@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import css from './NewTodoWindow.module.css';
 import { useAddTodoMutation, useGetTodosQuery } from '../../../../api/todosApiSlice';
 import Button from '../../../common/Button/Button';
@@ -70,19 +70,23 @@ const NewTodoWindow = ({ closeModal }) => {
     ;
   }
 
+  const formFields = useMemo(
+    () => fields.map((f) => (
+      <FormField {...f} key={f.id}
+        value={todo[f.id]}
+        onChange={handleFormFieldChange}
+        warning={!checks[f.id]}
+      />
+    ))
+  , [todo, checks]);
+
   return (
     <>
       {message 
         ? <MessageWindow message={message} showButton={message !== 'In progress...'} closeModal={closeModalAndResetState} />
         : (
           <form className={css.form} onSubmit={handleFormSubmit}>
-            {fields.map((f) => (
-              <FormField {...f} key={f.id}
-                value={todo[f.id]}
-                onChange={handleFormFieldChange}
-                warning={!checks[f.id]}
-              />
-            ))}
+            {formFields}
             <div className={css.btnsHolder}>
               <Button caption={'Add'} handleClick={null} type={'submit'} />
               <Button caption={'Cancel'} handleClick={closeModalAndResetState} classesArr={[css.cancelBtn]}/>

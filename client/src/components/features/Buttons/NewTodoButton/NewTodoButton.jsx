@@ -1,23 +1,29 @@
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
 import css from './NewTodoButton.module.css';
 import Button from '../../../common/Button/Button';
 import { createPortal } from 'react-dom';
 import Modal from '../../Modal/Modal';
 import NewTodoWindow from '../../ModalChildren/NewTodoWindow/NewTodoWindow';
+import { useDispatch, useSelector } from 'react-redux';
+import { close, open } from '../../Modal/modalSlice';
 
 const NewTodoButton = ({  }) => {
-  const [modal, setModal] = useState(false);
+  const modal = useSelector(state => state.modal);
+  const dispatch = useDispatch();
 
-  const handleClick = () => {
-    setModal(p => !p);
-  }
+  const modalHandlers = useMemo(() => {
+    return {
+      open: () => dispatch(open()),
+      close: () => dispatch(close())
+    }
+  }, [])
 
   return (
     <>
-      <Button caption={'New Task'} handleClick={handleClick} />
-      {modal && createPortal(
-        <Modal header={'Create New Task'} closeModal={handleClick}>
-          <NewTodoWindow closeModal={handleClick} />
+      <Button caption={'New Task'} handleClick={modalHandlers.open} />
+      {modal.opened && createPortal(
+        <Modal header={'Create New Task'} closeModal={modalHandlers.close}>
+          <NewTodoWindow closeModal={modalHandlers.close} />
         </Modal>,
         document.body
       )}

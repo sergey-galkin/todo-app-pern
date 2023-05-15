@@ -2,12 +2,12 @@ import { apiSlice } from './apiSlice';
 
 function createUrlParams(params) {
   if (!params) return '';
-  console.log(params);
+  // console.log(params);
   const data = Object.entries(params)
     .map(param => param.join('='))
     .join('&')
   ;
-  console.log(data);
+  // console.log(data);
   return data;
 };
 

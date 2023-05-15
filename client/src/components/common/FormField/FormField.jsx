@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import css from './FormField.module.css';
 
-const FormField = ({type, id, placeholder, value, onChange, warning}) => {
+const FormField = React.memo(({type, id, placeholder, value, onChange, warning}) => {
   return (
     <label className={css.fildHolder}>
       {warning &&
@@ -13,6 +13,6 @@ const FormField = ({type, id, placeholder, value, onChange, warning}) => {
       />
     </label>
   );
-}
+})
 
 export default FormField;
