@@ -1,15 +1,15 @@
 import React, { useMemo } from 'react';
-import css from './NewTodoButton.module.css';
+import css from './LoginButton.module.css';
 import Button from '../../../common/Button/Button';
 import { createPortal } from 'react-dom';
 import Modal from '../../Modal/Modal';
-import NewTodoWindow from '../../ModalChildren/NewTodoWindow/NewTodoWindow';
 import { useDispatch, useSelector } from 'react-redux';
 import { close, open } from '../../Modal/modalSlice';
+import LoginWindow from '../../ModalChildren/LoginWindow/LoginWindow';
 
-const modalOwner = 'newTodo';
+const modalOwner = 'login';
 
-const NewTodoButton = ({  }) => {
+const LoginButton = () => {
   const modal = useSelector(state => state.modal);
   const dispatch = useDispatch();
 
@@ -22,10 +22,10 @@ const NewTodoButton = ({  }) => {
 
   return (
     <>
-      <Button caption={'New Task'} handleClick={modalHandlers.open} />
+      <Button caption={'Login'} handleClick={modalHandlers.open} />
       {modal.owner === modalOwner && createPortal(
-        <Modal header={'Create New Task'} closeModal={modalHandlers.close}>
-          <NewTodoWindow closeModal={modalHandlers.close} />
+        <Modal header={'Login'} closeModal={modalHandlers.close}>
+          <LoginWindow closeModal={modalHandlers.close} />
         </Modal>,
         document.body
       )}
@@ -33,4 +33,4 @@ const NewTodoButton = ({  }) => {
   )
 }
 
-export default NewTodoButton
+export default LoginButton

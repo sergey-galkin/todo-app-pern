@@ -11,6 +11,7 @@ const app = express();
 app.listen(process.env.APP_PORT);
 
 app.use(express.json());
+app.use(require('./db/session'));
 
 const staticFolder = path.join(cwd, 'public');
 app.use('/', express.static(staticFolder));

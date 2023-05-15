@@ -1,13 +1,20 @@
 import React from 'react';
 import css from './Actions.module.css'
-import Button from '../../common/Button/Button';
 import NewTodoButton from '../Buttons/NewTodoButton/NewTodoButton';
+import LoginButton from '../Buttons/LoginButton/LoginButton';
+import { useIdentificationQuery } from '../../../api/authApiSlice';
+import LogoutButton from '../Buttons/LogoutButton/LogoutButton';
 
 const Actions = () => {
+  const { data: user } = useIdentificationQuery();
+  console.log(user);
   return (
     <div className={css.container}>
       <NewTodoButton />
-      <Button caption={'Login'} handleClick={() => {}}/>
+      {user
+        ? <LogoutButton />
+        : <LoginButton />
+      }
     </div>
   )
 }
