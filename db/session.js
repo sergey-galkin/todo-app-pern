@@ -16,7 +16,7 @@ module.exports = session({
   store: new PrismaSessionStore(
     prisma,
     {
-      checkPeriod: 60 * 60 * 1000,  //ms
+      checkPeriod: 60 * 60 * 1000,
       dbRecordIdIsSessionId: true,
       dbRecordIdFunction: undefined,
     }

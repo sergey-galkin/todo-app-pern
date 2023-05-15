@@ -1,0 +1,31 @@
+.label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 5px;
+}
+.checkbox {
+  display: none;
+}
+.checkbox:checked + .customCheckbox::before {
+  content: '✔';
+  font-size: 19px;
+}
+.customCheckbox {
+  --size: 30px;
+  width: var(--size);
+  height: var(--size);
+  color: green;
+  border: 1px solid #8d8d8d;
+  border-radius: 5px;
+}
+.caption { 
+  display: inline-block;
+  font-size: 0.9em;
+  text-align: left;
+  margin-left: 10px;
+}
+.caption::first-letter {
+  text-transform: uppercase;
+}

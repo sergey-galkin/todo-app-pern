@@ -22,10 +22,8 @@ const validateTodo = (todo) => {
 
 const todo = async (req, res) => {
   const todo = req.body;
-  // console.log(todo);
   const checks = validateTodo(todo);
   const status = Object.values(checks).reduce((res, v) => res ? v : res, true);
-  // console.log(status);
   
   if (status) {
     let savedTodo;

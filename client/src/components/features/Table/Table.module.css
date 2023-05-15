@@ -15,3 +15,7 @@
   color: green;
   text-align: center;
 }
+.table tr.editable:hover {
+  background: #84ffe4;
+  cursor: pointer;
+}

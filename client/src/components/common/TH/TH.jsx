@@ -8,7 +8,7 @@ const TH = memo(({ columnName, orderColumn, orderDirection, sort }) => {
   const triangleClassName = orderDirection === 'desc' ? css.rotated : '';
 
   const handleClick = useCallback(() => {
-    sort(columnName)
+    sort(columnName);
   })
 
   return (
@@ -21,4 +21,4 @@ const TH = memo(({ columnName, orderColumn, orderDirection, sort }) => {
   )
 })
 
-export default TH
+export default TH;

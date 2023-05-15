@@ -1,7 +1,6 @@
 const { Todo } = require("../db/request");
 
 const todos = async (req, res) => {
-  // console.log(req.query);
   const { limit, skip, orderColumn, orderDirection } = req.query;
   let todos, amount;
   try {

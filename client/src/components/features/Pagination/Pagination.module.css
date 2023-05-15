@@ -5,11 +5,12 @@
   background: #a4a4eb;
   padding: 10px 15px;
   border-radius: 9999px;
+  transition: .1s;
 }
 .page + .page {
   margin-left: 10px;
 }
 .currentPage,
 .page:hover {
-  background: #7e7ef0;
+  background: #5757ff;
 }

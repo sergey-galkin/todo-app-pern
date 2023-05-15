@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import css from './LogoutButton.module.css';
 import Button from '../../../common/Button/Button';
 import { useLogoutMutation } from '../../../../api/authApiSlice';

@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import css from './NewTodoButton.module.css';
 import Button from '../../../common/Button/Button';
 import { createPortal } from 'react-dom';
 import Modal from '../../Modal/Modal';
@@ -22,9 +21,9 @@ const NewTodoButton = ({  }) => {
 
   return (
     <>
-      <Button caption={'New Task'} handleClick={modalHandlers.open} />
+      <Button caption={'New Todo'} handleClick={modalHandlers.open} />
       {modal.owner === modalOwner && createPortal(
-        <Modal header={'Create New Task'} closeModal={modalHandlers.close}>
+        <Modal header={'Create New Todo'} closeModal={modalHandlers.close}>
           <NewTodoWindow closeModal={modalHandlers.close} />
         </Modal>,
         document.body

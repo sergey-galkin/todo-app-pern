@@ -2,12 +2,10 @@ import { apiSlice } from './apiSlice';
 
 function createUrlParams(params) {
   if (!params) return '';
-  // console.log(params);
   const data = Object.entries(params)
     .map(param => param.join('='))
     .join('&')
   ;
-  // console.log(data);
   return data;
 };
 
@@ -24,10 +22,18 @@ export const todosApiSlice = apiSlice.injectEndpoints({
         body: todo,
       }),
     }),
+    updateTodo: builder.mutation({
+      query: todo => ({
+        url: '/updateTodo',
+        method: 'post',
+        body: todo,
+      }),
+    }),
   })
 })
 
 export const {
   useGetTodosQuery,
   useAddTodoMutation,
+  useUpdateTodoMutation
 } = todosApiSlice

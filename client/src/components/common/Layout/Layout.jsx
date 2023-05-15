@@ -11,7 +11,7 @@ const Layout = () => {
       {isLoading 
         ? <Loader />
         : <Outlet />
-}
+      }
     </div>
   );
 }

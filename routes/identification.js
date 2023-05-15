@@ -1,4 +1,4 @@
-const identification = (req, res, next) => {
+const identification = (req, res) => {
   const user = req.session.user;
   res.send(user);
 }

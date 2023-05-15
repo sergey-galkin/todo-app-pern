@@ -54,7 +54,7 @@ const NewTodoWindow = ({ closeModal }) => {
       .then(res => {
         // console.log(res);
         if (res.status) {
-          dispatch(setMessage('Task successfully added'));
+          dispatch(setMessage('Todo successfully added'));
           dispatch(resetTodo());
           refetch();
         } else {

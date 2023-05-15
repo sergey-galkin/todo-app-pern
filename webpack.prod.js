@@ -29,13 +29,6 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.(png|svg)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'images/[name][ext]',
-        }
-      },
-      {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },

@@ -7,7 +7,7 @@ import LogoutButton from '../Buttons/LogoutButton/LogoutButton';
 
 const Actions = () => {
   const { data: user } = useIdentificationQuery();
-  console.log(user);
+  
   return (
     <div className={css.container}>
       <NewTodoButton />

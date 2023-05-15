@@ -15,13 +15,6 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.(png|svg)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'images/[name].[contenthash][ext]'
-        }
-      },
-      {
         test: /\.css$/i,
         use: [
           'style-loader',

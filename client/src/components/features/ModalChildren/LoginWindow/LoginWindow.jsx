@@ -1,11 +1,10 @@
 import React, { useCallback, useMemo } from 'react';
 import css from './LoginWindow.module.css';
-// import { useAddTodoMutation, useGetTodosQuery } from '../../../../api/todosApiSlice';
 import Button from '../../../common/Button/Button';
 import MessageWindow from '../MessageWindow/MessageWindow';
 import FormField from '../../../common/FormField/FormField';
 import { useDispatch, useSelector } from 'react-redux';
-import { useAuthenticationMutation, useIdentificationQuery } from '../../../../api/authApiSlice';
+import { useAuthenticationMutation } from '../../../../api/authApiSlice';
 import { resetCredentials, resetChecks, setCredentials, setChecks, setMessage } from './LoginWindowSlice';
 
 const fields = [
@@ -23,8 +22,6 @@ const fields = [
 
 const LoginWindow = ({ closeModal }) => {
   const [auth] = useAuthenticationMutation();
-  // const params = useSelector(state => state.table);
-  // const { refetch } = useGetTodosQuery(params);
   const dispatch = useDispatch();
   const { message, credentials, checks} = useSelector((state) => state.loginWindow);
 
@@ -48,7 +45,6 @@ const LoginWindow = ({ closeModal }) => {
     
     auth(credentials).unwrap()
       .then(res => {
-        console.log(res);
         if (res.status) {
           closeModalAndResetState();
         } else {

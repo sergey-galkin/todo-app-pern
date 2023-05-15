@@ -12,13 +12,9 @@ const setSession = (user) => {
   }
 
   return null;
-//   return {
-//     login: 'anonymous',
-//     role: 'user',
-//   }
 };
 
-const authentication = async (req, res, next) => {
+const authentication = async (req, res) => {
   const authData = req.body;
   
   let user;
@@ -35,7 +31,7 @@ const authentication = async (req, res, next) => {
   const status = user && (authData.password === user.password) ? true : false;
   const checks = setAuthChecks(status);
   
-  req.session.user = setSession(user);
+  if (status) req.session.user = setSession(user);
   
   res.send({status, checks});
 }

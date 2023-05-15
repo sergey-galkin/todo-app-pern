@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import css from './LoginButton.module.css';
 import Button from '../../../common/Button/Button';
 import { createPortal } from 'react-dom';
 import Modal from '../../Modal/Modal';
