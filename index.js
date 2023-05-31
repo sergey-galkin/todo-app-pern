@@ -4,7 +4,7 @@ const express = require("express");
 const routes = require("./routes");
 
 const cwd = process.cwd();
-const envFileName = process.env.NODE_ENV === 'development' ? '.env' : '.env.production'
+const envFileName = process.env.NODE_ENV === 'production' ? '.env.production' : '.env';
 dotenv.config({path: path.join(cwd, envFileName)});
 
 const app = express();
